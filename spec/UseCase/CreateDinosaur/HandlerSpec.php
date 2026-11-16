@@ -56,7 +56,7 @@ class HandlerSpec extends ObjectBehavior
               ->shouldHaveType(Output::class);
 
           // l'événement DinosaurIsBorn(42) est enregistré
-          //
+
           $expected = [new DinosaurIsBorn(43)];
 
           if ($expected != $this->eventsRegisterer->getEvents()) {
