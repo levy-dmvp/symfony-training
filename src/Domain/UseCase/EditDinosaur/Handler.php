@@ -7,6 +7,7 @@ namespace Domain\UseCase\EditDinosaur;
 use Domain\Collection\DinosaursCollection;
 use Domain\Collection\SpeciesCollection;
 use Domain\Exception\DinosaurAlreadyExistsException;
+use Domain\Exception\DinosaurNotFoundException;
 use Domain\Exception\SpeciesNotFoundException;
 
 final readonly class Handler
@@ -24,7 +25,7 @@ final readonly class Handler
             ->find($input->id);
 
         if (null === $dinosaur) {
-            throw new DinosaurAlreadyExistsException($input->name);
+            throw new DinosaurNotFoundException($input->name);
         }
 
         $species = $this

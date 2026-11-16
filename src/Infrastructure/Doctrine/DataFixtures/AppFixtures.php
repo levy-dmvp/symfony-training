@@ -134,7 +134,8 @@ final class AppFixtures extends Fixture
                 $gender[array_rand($gender)],
                 $speciesList[array_rand($speciesList)],
                 rand(1, 40),
-                '#000000'
+                '#000000',
+                new \DateTimeImmutable()
             );
 
             $manager->persist($dinosaur);

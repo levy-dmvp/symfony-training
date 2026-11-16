@@ -2,6 +2,7 @@
 
 namespace Domain\Model;
 
+
 class Dinosaur implements AggregateRoot
 {
     private int $id;
@@ -12,6 +13,7 @@ class Dinosaur implements AggregateRoot
         private Species $species,
         private int $age,
         private string $eyesColor,
+        private \DateTimeImmutable $birthdate
     ) {
     }
 
@@ -70,6 +72,16 @@ class Dinosaur implements AggregateRoot
         $this->eyesColor = $eyesColor;
     }
 
+    public function getBirthdate(): \DateTime
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(\DateTimeImmutable $birthdate): void
+    {
+        $this->birthdate = $birthdate;
+    }
+
     public function toArray(): array
     {
         return [
@@ -79,6 +91,7 @@ class Dinosaur implements AggregateRoot
             'species' => $this->species,
             'age' => $this->age,
             'eyesColor' => $this->eyesColor,
+            'birthdate'=> $this->birthdate,
         ];
     }
 }
