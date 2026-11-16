@@ -13,7 +13,7 @@ final readonly class Input
         public string $speciesId,
         public int $age,
         public string $eyesColor,
-        public \DateTimeImmutable $birthdate
+        public ?\DateTimeImmutable $birthdate
     ) {
     }
 }

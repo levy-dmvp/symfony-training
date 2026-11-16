@@ -1,0 +1,17 @@
+overblog_graphql:
+  security:
+    query_max_complexity: 500
+    query_max_depth: 0
+  definitions:
+    schema:
+      main:
+        query: Query
+        mutation: Mutation
+    mappings:
+      types:
+        - type: yaml
+          dir: '%kernel.project_dir%/config/graphql/types'
+          suffix: ~
+  errors_handler:
+        enabled: true
+        rethrow_internal_exceptions: true

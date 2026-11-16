@@ -1,0 +1,10 @@
+Species:
+  type: object
+  config:
+    fields:
+      id: { type: 'ID!' }
+      name: { type: 'String!', complexity: '@=10' }
+      habitats: { type: '[String!]!',complexity: '@=10' }
+      feeding: { type: 'String!',complexity: '@=10' }
+      dinosaurs: { type: '[Dinosaur!]!' }
+      dino_count: { type: 'Int'}

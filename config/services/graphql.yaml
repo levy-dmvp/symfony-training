@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Application\GraphQL\DinosaurResolver:
+      tags:
+        - name: overblog_graphql.query
+          alias: dinosaurs
+          method: dinosaurs
+        - name: overblog_graphql.query
+          alias: dinosaur
+          method: dinosaur
+        - name: overblog_graphql.mutation
+          alias: createDinosaur
+          method: createDinosaur
+    Application\GraphQL\SpeciesResolver:
+      tags:
+        - name: overblog_graphql.query
+          alias: species
+          method: species
+        - name: overblog_graphql.mutation
+          alias: createSpecies
+          method: createSpecies
+
+    Application\GraphQL\DinosaurResolverMap:
+        tags:
+        - name: overblog_graphql.resolver_map
+          schema: main
+    Application\GraphQL\SpeciesResolverMap:
+        tags:
+        - name: overblog_graphql.resolver_map
+          schema: main

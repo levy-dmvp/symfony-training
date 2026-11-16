@@ -30,6 +30,19 @@ final class SpeciesRepository extends ServiceEntityRepository implements Species
         ;
     }
 
+    public function search(?string $q): array
+    {
+        if (null === $q) {
+            return $this->findAll();
+        }
+
+        return $this->createQueryBuilder('s')
+            ->where('s.name = :q')
+            ->setParameter('q', $q)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function add(Species $species): void
     {
         $this->objectManager->persist($species);
