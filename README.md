@@ -24,7 +24,9 @@ make database-create
 make database-migrate
 ```
 
-You can now access the application on [localhost](http://127.0.0.1/login).
+You can now access the application on [localhost](http://127.0.0.1:8000/login).
+
+Ports are bound to `127.0.0.1` and configurable in `.env`: `HTTP_PORT` (default `8000`) for the application, `PMA_PORT` (default `8080`) for phpMyAdmin.
 
 ### Fixtures
 
