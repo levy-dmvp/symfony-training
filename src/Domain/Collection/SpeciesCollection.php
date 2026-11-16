@@ -17,8 +17,9 @@ interface SpeciesCollection
 
     public function findByName(string $name): ?Species;
 
+    public function search(?string $search): array;
+
     public function add(Species $species): void;
 
     public function remove(Species $species): void;
 }
-

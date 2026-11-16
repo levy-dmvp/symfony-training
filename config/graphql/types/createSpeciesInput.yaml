@@ -1,0 +1,7 @@
+CreateSpeciesInput:
+  type: input-object
+  config:
+    fields:
+      name: { type: 'String!' }
+      habitats: { type: '[String!]!' }
+      feeding: { type: 'String!' }

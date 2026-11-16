@@ -14,7 +14,7 @@ final class Dinosaur
     private Species $species;
     private int $age;
     private string $eyesColor;
-    private \DateTimeImmutable $birthdate;
+    private ?\DateTimeImmutable $birthdate;
 
     public function __construct(ModelDinosaur $dinosaurModel)
     {
