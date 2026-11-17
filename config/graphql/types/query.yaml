@@ -3,6 +3,7 @@ Query:
   config:
     fields:
       dinosaurs:
+        access: "@=hasRole('ROLE_TRUC')" #role mis a la main en BDD
         complexity: '@=20 + childrenComplexity'
         type: '[Dinosaur!]!'
         args: { search: { type: 'String' } }
@@ -12,6 +13,7 @@ Query:
             args["search"]
           )
       dinosaur:
+        access: "@=isAuthenticated()"
         type: 'Dinosaur!'
         args: { id: { type: 'ID!' } }
         resolve:  |
@@ -20,6 +22,7 @@ Query:
             args["id"]
           )
       species:
+        access: "@=isAuthenticated()"
         complexity: '@=20 + childrenComplexity'
         type: '[Species!]!'
         args: { search: { type: 'String' } }

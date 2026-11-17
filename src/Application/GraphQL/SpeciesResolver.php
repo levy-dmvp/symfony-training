@@ -6,6 +6,8 @@ use Domain\Collection\SpeciesCollection;
 use Domain\Exception\SpeciesNotFoundException;
 use Domain\Model\Species;
 use Domain\UseCase\CreateSpecies;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 final readonly class SpeciesResolver
 {
     public function __construct(
@@ -13,7 +15,7 @@ final readonly class SpeciesResolver
         private CommandBus $commandBus,
     ) {
     }
-
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function species(?string $search): array
     {
         return $this->species->search($search);

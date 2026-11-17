@@ -33,4 +33,9 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->user->getPassword();
     }
+
+    public function getId(): int
+    {
+        return $this->user->getId();
+    }
 }
