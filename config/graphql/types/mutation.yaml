@@ -1,8 +1,11 @@
 Mutation:
   type: object
+
   config:
+
     fields:
       createDinosaur:
+        access: "@=isGranted('ROLE_ADMIN')"
         type: 'Dinosaur!'
         args: { input: { type: 'CreateDinosaurInput!' } }
         resolve: |
@@ -25,4 +28,13 @@ Mutation:
           @=mutation(
             "createSpecies",
             args["input"]
+          )
+      login:
+        type: 'String!'
+        args: { email: { type: 'String!' }, password: { type: 'String!' }  }
+        resolve: |
+          @=mutation(
+            "login",
+            args["email"],
+            args["password"]
           )

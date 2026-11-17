@@ -11,4 +11,7 @@ interface UsersCollection
     public function findOneByEmail(string $email): ?User;
 
     public function add(User $user): void;
+
+
+    public function findById(int $id): ?User;
 }

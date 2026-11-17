@@ -20,6 +20,10 @@ final class UserRepository extends ServiceEntityRepository implements UsersColle
         $this->objectManager = $registry->getManager();
     }
 
+    public function findById(int $id):?User{
+        return $this->find($id);
+    }
+
     public function findOneByEmail(string $email): ?User
     {
         return $this->createQueryBuilder('u')

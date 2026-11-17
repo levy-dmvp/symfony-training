@@ -3,7 +3,7 @@ Dinosaur:
   config:
     fields:
       id: { type: 'ID!' }
-      name: { type: 'String!',         complexity: '@=10' }
+      name: { type: 'String!',  complexity: '@=10', deprecationReason: "Stop using this shit, use displayName bruh" }
       gender: { type: 'String!' }
       age: { type: 'Int!' }
       eyesColor: { type: 'String!' }

@@ -14,9 +14,6 @@ services:
         - name: overblog_graphql.mutation
           alias: createDinosaur
           method: createDinosaur
-        - name: overblog_graphql.mutation
-          alias: deleteDinosaur
-          method: deleteDinosaur
     Application\GraphQL\SpeciesResolver:
       tags:
         - name: overblog_graphql.query
@@ -25,7 +22,6 @@ services:
         - name: overblog_graphql.mutation
           alias: createSpecies
           method: createSpecies
-
     Application\GraphQL\DinosaurResolverMap:
         tags:
         - name: overblog_graphql.resolver_map
@@ -34,3 +30,7 @@ services:
         tags:
         - name: overblog_graphql.resolver_map
           schema: main
+    Application\GraphQL\AuthResolver:
+        tags:
+          - name: overblog_graphql.mutation
+            alias: login
