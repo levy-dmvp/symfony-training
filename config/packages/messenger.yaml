@@ -1,9 +1,18 @@
 framework:
   messenger:
     default_bus: command.bus
+    failure_transport: failed
     transports:
       sync: 'sync://'
-
+      async:
+       dsn: 'doctrine://default?queue_name=async'
+       retry_strategy:
+         max_retries: 2
+         delay: 1000
+      failed: '%env(ASYNC_DSN_FAILED)%'
+    routing:
+       Domain\Event\DinosaurIsBorn: async
+       Domain\Event\DinosaurDied: async
     buses:
       command.bus:
         default_middleware: true

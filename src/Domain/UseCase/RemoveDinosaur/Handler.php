@@ -27,12 +27,12 @@ final class Handler
             throw new DinosaurNotFoundException($input->id);
         }
 
-        $this->dinosaursCollection->remove($dinosaur);
 
         $this->eventsRegisterer->register(new DinosaurDied(
             $dinosaur->getId(),
             $dinosaur->getName()
         ));
+        $this->dinosaursCollection->remove($dinosaur);
 
         return new Output();
     }

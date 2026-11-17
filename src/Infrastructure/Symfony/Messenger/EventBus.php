@@ -11,7 +11,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class EventBus implements EventBusInterface
 {
-    use HandleTrait;
 
     public function __construct(private MessageBusInterface $messageBus)
     {
@@ -19,16 +18,16 @@ final class EventBus implements EventBusInterface
 
     public function dispatch(object $event): void
     {
-        try {
-            $this->handle($event);
-        } catch (HandlerFailedException $handlerFailedException) {
-            $nestedExceptions = $handlerFailedException->getWrappedExceptions();
+         try {
+             $this->messageBus->dispatch($event);
+         } catch (HandlerFailedException $e) {
+             $nestedExceptions = $handlerFailedException->getWrappedExceptions();
 
-            if (false === $nested = current($nestedExceptions)) {
-                throw $handlerFailedException;
-            }
+             if (false === $nested = current($nestedExceptions)) {
+                 throw $handlerFailedException;
+             }
 
-            throw $nested;
-        }
+             throw $nested;
+         }
     }
 }
