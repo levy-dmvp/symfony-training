@@ -10,6 +10,14 @@ Mutation:
             "createDinosaur",
             args["input"]
           )
+      deleteDinosaur:
+        type: 'Boolean!'
+        args: { id: 'ID!' }
+        resolve: |
+          @=mutation(
+            "deleteDinosaur",
+            args["id"]
+          )
       createSpecies:
         type: 'Species!'
         args: { input: { type: 'CreateSpeciesInput!' } }
