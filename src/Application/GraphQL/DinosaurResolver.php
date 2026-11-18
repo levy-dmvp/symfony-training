@@ -8,6 +8,7 @@ use Domain\Exception\DinosaurNotFoundException;
 use Domain\Model\Dinosaur;
 use Domain\UseCase\CreateDinosaur;
 use Domain\UseCase\RemoveDinosaur;
+use Infrastructure\Symfony\Security\Voter\RemoveDinosaureVoter;
 use Symfony\Bundle\SecurityBundle\Security;
 
 
@@ -51,6 +52,15 @@ final readonly class DinosaurResolver
 
     public function deleteDinosaur(string $idd): bool
     {
+        $dino = $this->dinosaurs->find($idd)
+            ?? throw new DinosaurNotFoundException($idd);
+
+        $isGranted =  $this->security->isGranted(RemoveDinosaureVoter::ATTRIBUTES);
+
+        if(false === $isGranted){
+            throw new \RuntimeException('Unauthorized');
+        }
+
         $this->commandBus->dispatch(new RemoveDinosaur\Input( $idd));
 
         return true;

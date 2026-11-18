@@ -3,3 +3,4 @@ services:
         autowire: true
         autoconfigure: true
     Infrastructure\Symfony\Security\BearerAuthenticator: ~
+    Infrastructure\Symfony\Security\Voter\RemoveDinosaureVoter: ~
